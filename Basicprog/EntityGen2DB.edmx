@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GEN2_MEASUREDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_FrontCase">
+          <Key>
+            <PropertyRef Name="Insert_Time" />
+            <PropertyRef Name="Work_Date" />
+            <PropertyRef Name="Work_No" />
+            <PropertyRef Name="FrontCase_Bar" />
+          </Key>
+          <Property Name="Insert_Time" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="Work_Date" Type="int" Nullable="false" />
+          <Property Name="Work_No" Type="int" Nullable="false" />
+          <Property Name="FrontCase_Bar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Part_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FCase_4WD_Min" Type="float" />
+          <Property Name="FCase_4WD_Val" Type="float" />
+          <Property Name="FCase_4WD_Max" Type="float" />
+          <Property Name="FCase_G4_Min" Type="float" />
+          <Property Name="FCase_G4_Val" Type="float" />
+          <Property Name="FCase_G4_Max" Type="float" />
+        </EntityType>
+        <EntityType Name="TB_FrontSetting">
+          <Key>
+            <PropertyRef Name="ALC_Code" />
+          </Key>
+          <Property Name="ALC_Code" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Part_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StandardVal" Type="float" />
+          <Property Name="Gain_G4" Type="float" />
+          <Property Name="Shim_G4_Min" Type="float" />
+          <Property Name="Shim_G4_Max" Type="float" />
+          <Property Name="Shim_G4_Range" Type="float" />
+        </EntityType>
+        <EntityType Name="TB_FrontShim">
+          <Key>
+            <PropertyRef Name="Work_Date" />
+            <PropertyRef Name="FrontCase_Bar" />
+          </Key>
+          <Property Name="Work_Date" Type="int" Nullable="false" />
+          <Property Name="Work_No" Type="int" Nullable="false" />
+          <Property Name="Part_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FrontCase_Bar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GearNo_Front" Type="varchar" MaxLength="50" />
+          <Property Name="StandardDis_Val" Type="float" />
+          <Property Name="FCase_G4_Val" Type="float" />
+          <Property Name="FGear_G4_Val" Type="float" />
+          <Property Name="FGear_G2_Val" Type="float" />
+          <Property Name="ShimG4_Val" Type="float" />
+          <Property Name="ShimG4_Offset" Type="float" />
+          <Property Name="ShimG4_Chk_Val" Type="float" />
+        </EntityType>
+        <EntityType Name="TB_GearFront">
+          <Key>
+            <PropertyRef Name="Insert_Time" />
+            <PropertyRef Name="Work_Date" />
+            <PropertyRef Name="Work_No" />
+            <PropertyRef Name="GearNo_Front" />
+          </Key>
+          <Property Name="Insert_Time" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="Work_Date" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Work_No" Type="int" Nullable="false" />
+          <Property Name="GearNo_Front" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GearNo_4WD" Type="varchar" MaxLength="50" />
+          <Property Name="Part_Name" Type="varchar" MaxLength="50" />
+          <Property Name="FGear_G4_Min" Type="float" />
+          <Property Name="FGear_G4_Val" Type="float" />
+          <Property Name="FGear_G4_Max" Type="float" />
+          <Property Name="FGear_G2_Min" Type="float" />
+          <Property Name="FGear_G2_Val" Type="float" />
+          <Property Name="FGear_G2_Max" Type="float" />
+        </EntityType>
+        <EntityType Name="TB_WORKMASTER">
+          <Key>
+            <PropertyRef Name="SEQ" />
+          </Key>
+          <Property Name="SEQ" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="INSERT_TIME" Type="datetime2" Precision="3" />
+          <Property Name="Work_Date" Type="int" Nullable="false" />
+          <Property Name="Master_No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Part_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Index_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Master" Type="varchar" MaxLength="50" />
+          <Property Name="Measure" Type="varchar" MaxLength="50" />
+          <Property Name="Pre_Offset" Type="varchar" MaxLength="50" />
+          <Property Name="Cal_Offset" Type="varchar" MaxLength="50" />
+          <Property Name="Difference" Type="varchar" MaxLength="50" />
+          <Property Name="Apply_Offset" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="GEN2_MEASUREDBModelStoreContainer">
+          <EntitySet Name="TB_FrontCase" EntityType="Self.TB_FrontCase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_FrontSetting" EntityType="Self.TB_FrontSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_FrontShim" EntityType="Self.TB_FrontShim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_GearFront" EntityType="Self.TB_GearFront" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_WORKMASTER" EntityType="Self.TB_WORKMASTER" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GEN2_MEASUREDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GEN2_MEASUREDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_FrontCase" EntityType="GEN2_MEASUREDBModel.TB_FrontCase" />
+          <EntitySet Name="TB_FrontSetting" EntityType="GEN2_MEASUREDBModel.TB_FrontSetting" />
+          <EntitySet Name="TB_GearFront" EntityType="GEN2_MEASUREDBModel.TB_GearFront" />
+          <EntitySet Name="TB_FrontShim" EntityType="GEN2_MEASUREDBModel.TB_FrontShim" />
+          <EntitySet Name="TB_WORKMASTER" EntityType="GEN2_MEASUREDBModel.TB_WORKMASTER" />
+          </EntityContainer>
+        <EntityType Name="TB_FrontCase">
+          <Key>
+            <PropertyRef Name="Insert_Time" />
+            <PropertyRef Name="Work_Date" />
+            <PropertyRef Name="Work_No" />
+            <PropertyRef Name="FrontCase_Bar" />
+          </Key>
+          <Property Name="Insert_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Work_Date" Type="Int32" Nullable="false" />
+          <Property Name="Work_No" Type="Int32" Nullable="false" />
+          <Property Name="FrontCase_Bar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Part_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FCase_4WD_Min" Type="Double" />
+          <Property Name="FCase_4WD_Val" Type="Double" />
+          <Property Name="FCase_4WD_Max" Type="Double" />
+          <Property Name="FCase_G4_Min" Type="Double" />
+          <Property Name="FCase_G4_Val" Type="Double" />
+          <Property Name="FCase_G4_Max" Type="Double" />
+        </EntityType>
+        <EntityType Name="TB_FrontSetting">
+          <Key>
+            <PropertyRef Name="ALC_Code" />
+          </Key>
+          <Property Name="ALC_Code" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Part_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StandardVal" Type="Double" />
+          <Property Name="Gain_G4" Type="Double" />
+          <Property Name="Shim_G4_Min" Type="Double" />
+          <Property Name="Shim_G4_Max" Type="Double" />
+          <Property Name="Shim_G4_Range" Type="Double" />
+        </EntityType>
+        <EntityType Name="TB_GearFront">
+          <Key>
+            <PropertyRef Name="Insert_Time" />
+            <PropertyRef Name="Work_Date" />
+            <PropertyRef Name="Work_No" />
+            <PropertyRef Name="GearNo_Front" />
+          </Key>
+          <Property Name="Insert_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Work_Date" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Work_No" Type="Int32" Nullable="false" />
+          <Property Name="GearNo_Front" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GearNo_4WD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Part_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FGear_G4_Min" Type="Double" />
+          <Property Name="FGear_G4_Val" Type="Double" />
+          <Property Name="FGear_G4_Max" Type="Double" />
+          <Property Name="FGear_G2_Min" Type="Double" />
+          <Property Name="FGear_G2_Val" Type="Double" />
+          <Property Name="FGear_G2_Max" Type="Double" />
+        </EntityType>
+        <EntityType Name="TB_FrontShim">
+          <Key>
+            <PropertyRef Name="Work_Date" />
+            <PropertyRef Name="FrontCase_Bar" />
+          </Key>
+          <Property Name="Work_Date" Type="Int32" Nullable="false" />
+          <Property Name="Work_No" Type="Int32" Nullable="false" />
+          <Property Name="Part_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FrontCase_Bar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GearNo_Front" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StandardDis_Val" Type="Double" />
+          <Property Name="FCase_G4_Val" Type="Double" />
+          <Property Name="FGear_G4_Val" Type="Double" />
+          <Property Name="FGear_G2_Val" Type="Double" />
+          <Property Name="ShimG4_Val" Type="Double" />
+          <Property Name="ShimG4_Offset" Type="Double" />
+          <Property Name="ShimG4_Chk_Val" Type="Double" />
+        </EntityType>
+        <EntityType Name="TB_WORKMASTER">
+          <Key>
+            <PropertyRef Name="SEQ" />
+          </Key>
+          <Property Name="SEQ" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="INSERT_TIME" Type="DateTime" Precision="3" />
+          <Property Name="Work_Date" Type="Int32" Nullable="false" />
+          <Property Name="Master_No" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Part_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Index_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Master" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pre_Offset" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cal_Offset" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Difference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apply_Offset" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GEN2_MEASUREDBModelStoreContainer" CdmEntityContainer="GEN2_MEASUREDBEntities">
+          <EntitySetMapping Name="TB_FrontCase">
+            <EntityTypeMapping TypeName="GEN2_MEASUREDBModel.TB_FrontCase">
+              <MappingFragment StoreEntitySet="TB_FrontCase">
+                <ScalarProperty Name="FCase_G4_Max" ColumnName="FCase_G4_Max" />
+                <ScalarProperty Name="FCase_G4_Val" ColumnName="FCase_G4_Val" />
+                <ScalarProperty Name="FCase_G4_Min" ColumnName="FCase_G4_Min" />
+                <ScalarProperty Name="FCase_4WD_Max" ColumnName="FCase_4WD_Max" />
+                <ScalarProperty Name="FCase_4WD_Val" ColumnName="FCase_4WD_Val" />
+                <ScalarProperty Name="FCase_4WD_Min" ColumnName="FCase_4WD_Min" />
+                <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+                <ScalarProperty Name="FrontCase_Bar" ColumnName="FrontCase_Bar" />
+                <ScalarProperty Name="Work_No" ColumnName="Work_No" />
+                <ScalarProperty Name="Work_Date" ColumnName="Work_Date" />
+                <ScalarProperty Name="Insert_Time" ColumnName="Insert_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_FrontSetting">
+            <EntityTypeMapping TypeName="GEN2_MEASUREDBModel.TB_FrontSetting">
+              <MappingFragment StoreEntitySet="TB_FrontSetting">
+                <ScalarProperty Name="Shim_G4_Range" ColumnName="Shim_G4_Range" />
+                <ScalarProperty Name="Shim_G4_Max" ColumnName="Shim_G4_Max" />
+                <ScalarProperty Name="Shim_G4_Min" ColumnName="Shim_G4_Min" />
+                <ScalarProperty Name="Gain_G4" ColumnName="Gain_G4" />
+                <ScalarProperty Name="StandardVal" ColumnName="StandardVal" />
+                <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+                <ScalarProperty Name="ALC_Code" ColumnName="ALC_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_GearFront">
+            <EntityTypeMapping TypeName="GEN2_MEASUREDBModel.TB_GearFront">
+              <MappingFragment StoreEntitySet="TB_GearFront">
+                <ScalarProperty Name="FGear_G2_Max" ColumnName="FGear_G2_Max" />
+                <ScalarProperty Name="FGear_G2_Val" ColumnName="FGear_G2_Val" />
+                <ScalarProperty Name="FGear_G2_Min" ColumnName="FGear_G2_Min" />
+                <ScalarProperty Name="FGear_G4_Max" ColumnName="FGear_G4_Max" />
+                <ScalarProperty Name="FGear_G4_Val" ColumnName="FGear_G4_Val" />
+                <ScalarProperty Name="FGear_G4_Min" ColumnName="FGear_G4_Min" />
+                <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+                <ScalarProperty Name="GearNo_4WD" ColumnName="GearNo_4WD" />
+                <ScalarProperty Name="GearNo_Front" ColumnName="GearNo_Front" />
+                <ScalarProperty Name="Work_No" ColumnName="Work_No" />
+                <ScalarProperty Name="Work_Date" ColumnName="Work_Date" />
+                <ScalarProperty Name="Insert_Time" ColumnName="Insert_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_FrontShim">
+            <EntityTypeMapping TypeName="GEN2_MEASUREDBModel.TB_FrontShim">
+              <MappingFragment StoreEntitySet="TB_FrontShim">
+                <ScalarProperty Name="ShimG4_Chk_Val" ColumnName="ShimG4_Chk_Val" />
+                <ScalarProperty Name="ShimG4_Offset" ColumnName="ShimG4_Offset" />
+                <ScalarProperty Name="ShimG4_Val" ColumnName="ShimG4_Val" />
+                <ScalarProperty Name="FGear_G2_Val" ColumnName="FGear_G2_Val" />
+                <ScalarProperty Name="FGear_G4_Val" ColumnName="FGear_G4_Val" />
+                <ScalarProperty Name="FCase_G4_Val" ColumnName="FCase_G4_Val" />
+                <ScalarProperty Name="StandardDis_Val" ColumnName="StandardDis_Val" />
+                <ScalarProperty Name="GearNo_Front" ColumnName="GearNo_Front" />
+                <ScalarProperty Name="FrontCase_Bar" ColumnName="FrontCase_Bar" />
+                <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+                <ScalarProperty Name="Work_No" ColumnName="Work_No" />
+                <ScalarProperty Name="Work_Date" ColumnName="Work_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_WORKMASTER">
+            <EntityTypeMapping TypeName="GEN2_MEASUREDBModel.TB_WORKMASTER">
+              <MappingFragment StoreEntitySet="TB_WORKMASTER">
+                <ScalarProperty Name="Apply_Offset" ColumnName="Apply_Offset" />
+                <ScalarProperty Name="Difference" ColumnName="Difference" />
+                <ScalarProperty Name="Cal_Offset" ColumnName="Cal_Offset" />
+                <ScalarProperty Name="Pre_Offset" ColumnName="Pre_Offset" />
+                <ScalarProperty Name="Measure" ColumnName="Measure" />
+                <ScalarProperty Name="Master" ColumnName="Master" />
+                <ScalarProperty Name="Index_Name" ColumnName="Index_Name" />
+                <ScalarProperty Name="Part_Name" ColumnName="Part_Name" />
+                <ScalarProperty Name="Master_No" ColumnName="Master_No" />
+                <ScalarProperty Name="Work_Date" ColumnName="Work_Date" />
+                <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
